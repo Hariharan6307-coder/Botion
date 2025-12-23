@@ -1,0 +1,23 @@
+{
+  "name": "botion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hariharan6307-coder/Botion.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hariharan6307-coder/Botion/issues"
+  },
+  "homepage": "https://github.com/Hariharan6307-coder/Botion#readme",
+  "devDependencies": {
+    "supabase": "^2.70.4"
+  }
+}
