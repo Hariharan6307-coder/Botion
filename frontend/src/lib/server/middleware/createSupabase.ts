@@ -16,7 +16,7 @@ const createSupabase:Handle = async ({ event, resolve }) => {
         }
     });
 
-    event.locals.safeGetUserAndSession = async () => {
+    event.locals.getUserAndSession = async () => {
         const { data: { user }, error } = await event.locals.supabase.auth.getUser();
         if (error) {
             return { user: null, session: null };
@@ -29,13 +29,13 @@ const createSupabase:Handle = async ({ event, resolve }) => {
     }
 
     event.locals.getSession = async () => {
-        const { session } = await event.locals.safeGetUserAndSession();
+        const { session } = await event.locals.getUserAndSession();
         return session;
     }
     event.locals.session = await event.locals.getSession();
 
     event.locals.getUser = async () => {
-        const { user } = await event.locals.safeGetUserAndSession();
+        const { user } = await event.locals.getUserAndSession();
         return user;
     }
     event.locals.user = await event.locals.getUser();
