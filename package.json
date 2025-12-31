@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/Hariharan6307-coder/Botion#readme",
   "devDependencies": {
+    "@types/node": "^25.0.3",
+    "prisma": "^7.2.0",
     "supabase": "^2.70.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.2.0"
   }
 }
