@@ -18,6 +18,29 @@ func NewBlockRepository(db *pgxpool.Pool) *BlockRepository {
 	return &BlockRepository{db: db}
 }
 
+func (r *BlockRepository) GetPage(ctx context.Context) (*models.Page, error){
+	page := &models.Page{}
+	query := `
+		SELECT id, title
+		FROM "Page"
+		WHERE id = $1
+	`
+
+	err := r.db.QueryRow(ctx, query, "550e8400-e29b-41d4-a716-446655440000").Scan(
+		&page.ID, &page.Title,
+	)
+
+	if err == pgx.ErrNoRows {
+		return nil, fmt.Errorf("Page not found")
+	}
+	if err != nil {
+		return nil, fmt.Errorf("Failed to get page: %w", err)
+	}
+
+	return page, nil
+}
+
+
 func (r *BlockRepository) Create(ctx context.Context, req models.CreateBlockRequest) (*models.Block, error) {
 	block := &models.Block{
 		ID:           uuid.New().String(),
